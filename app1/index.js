@@ -53,7 +53,7 @@ app.put('/users/:id', (req, res) => {
   }
 
   return res.status(201).json(users[userIndex]);
-})
+});
 
 app.delete('/users/:id', (req, res) => {
   const { id } = req.params;
