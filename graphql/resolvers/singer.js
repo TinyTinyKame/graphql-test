@@ -1,23 +1,32 @@
 const { v4: uuidv4 } = require('uuid');
-const singers = require('../../singers/datas/singers');
+const axios = require('axios');
+const singerInstance = axios.create({
+  baseURL: 'http://localhost:3001/singers'
+})
 
-const getSingers = () => {
-  return singers;
+const getSingers = async () => {
+  try {
+    const singers = await singerInstance.get('/');
+
+    return singers.data;
+  } catch (err) {
+    return null;
+  }
+
 };
 
 const getSinger = ({ id }) => {
   return singers.find(singer => singer.id === id);
 };
 
-const createSinger = ({ singer }) => {
-  const newSinger = {
-    id: uuidv4(),
-    ...singer
-  };
+const createSinger = async ({ singer }) => {
+  try {
+    const newSinger = await singerInstance.post('/', { ...singer });
 
-  singers.push(newSinger);
-
-  return newSinger;
+    return newSinger.data;
+  } catch (err) {
+    return null;
+  }
 };
 
 module.exports = {
