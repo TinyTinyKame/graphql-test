@@ -13,11 +13,12 @@ const schema = buildSchema(`
   type Song {
     id: ID!,
     name: String!,
-    singerId: String
+    singer: Singer!
   }
 
   input SongInput {
-    name: String!
+    name: String!,
+    singerId: ID!
   }
 
   type Query {
