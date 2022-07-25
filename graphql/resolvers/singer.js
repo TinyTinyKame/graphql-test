@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require('uuid');
 const singers = require('../../singers/datas/singers');
 
 const getSingers = () => {
@@ -9,9 +10,14 @@ const getSinger = ({ id }) => {
 };
 
 const createSinger = ({ singer }) => {
-  singers.push(singer);
+  const newSinger = {
+    id: uuidv4(),
+    ...singer
+  };
 
-  return singer;
+  singers.push(newSinger);
+
+  return newSinger;
 };
 
 module.exports = {

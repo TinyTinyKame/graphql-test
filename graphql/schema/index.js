@@ -7,7 +7,6 @@ const schema = buildSchema(`
   }
 
   input SingerInput {
-    id: ID!,
     name: String!
   }
 
@@ -17,14 +16,20 @@ const schema = buildSchema(`
     singerId: String
   }
 
+  input SongInput {
+    name: String!
+  }
+
   type Query {
-    singers: [Singer]
-    songs: [Song]
+    singers: [Singer!]
+    songs: [Song!]
     singer(id: ID!): Singer
+    song(id: ID!): Song
   }
 
   type Mutation {
-    createSinger(singer: SingerInput!): Singer
+    createSinger(singer: SingerInput!): Singer!
+    createSong(song: SongInput!): Song!
   }
 `);
 

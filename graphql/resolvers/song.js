@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require('uuid');
 const songs = require('../../songs/datas/songs');
 
 const getSongs = () => {
@@ -9,9 +10,14 @@ const getSong = ({ id }) => {
 };
 
 const createSong = ({ song }) => {
-  songs.push(song);
+  const newSong = {
+    id: uuidv4(),
+    ...song
+  }
 
-  return song;
+  songs.push(newSong);
+
+  return newSong;
 };
 
 module.exports = {
