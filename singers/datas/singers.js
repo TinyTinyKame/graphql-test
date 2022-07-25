@@ -1,5 +1,3 @@
-const { v4: uuidv4 } = require('uuid');
-
 const singers = [
   {
     id: "ee770343-585e-4087-9689-c8605a27a94e",
