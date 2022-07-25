@@ -1,14 +1,7 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
-const singers = require('../singers/datas/singers');
-const songs = require('../songs/datas/songs');
-
-const schema = buildSchema(`
-`)
-
-const resolvers = {
-};
+const schema = require('./schema');
+const resolvers = require('./resolvers');
 
 const app = express();
 app.use('/graphql', graphqlHTTP({
